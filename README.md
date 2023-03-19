@@ -64,6 +64,42 @@ Para más información, consulta la [documentación oficial de nginx-proxy-manag
 #### 🛑 Importante
 
 En ningún caso expongas los puertos DNS de pi-hole a internet, estos deben ser accesibles solo desde la maquina de docker o la red local. Configura tu firewall para bloquear estos puertos.
-## Licencia
+## Diagramas y capturas
 
-Este proyecto se distribuye bajo la licencia MIT. Consulte el archivo [LICENSE](https://chat.openai.com/LICENSE) para obtener más información.
+Los siguientes diagramas detallan la configuracion realizada, aunque esta no tiene porque ser seguida integramente.
+
+### *Diagrama de flujo*
+
+El funcionamiento general de la PoC propuesta, se resume con el siguiente diagrama.
+
+![Diagrama de flujo](./images/diagrama_contenedores.png)
+
+### *Configuraciones hosts - **Nginx Proxy Manager***
+
+Se han definido dos hosts, uno para el panel de **Nginx Proxy Manager** y **Pihole** y otro para el panel de **WireGuard**. Cabe la posibilidad de configurar el acceso al panel de **Wireguard**, como URI, al igual que el panel de **Pihole**, aunque el uso de redirecciones internas, complica dicha configuración.
+
+![Configración de Hosts](./images/conf_hosts.png)
+
+### *Configuración URL general (**Nginx Proxy Manager** y **Pihole**)*
+
+Para la configuración de **Nginx Proxy Manager** se define esta configuración general para este dominio.
+
+![Configración de Proxy Host](./images/conf.png)
+
+Uso de certificado forzado con **letsencrypt**.
+
+![Configración de certificado](./images/conf_cert.png)
+
+Configuración del **Location** para acceder a **Pihole**
+
+![Configración de Location](./images/conf_location.png)
+
+### *Configuración URL Panel **Wireguard** *
+
+Definición general para este dominio.
+
+![Configración de Proxy Host](./images/conf_vnp.png)
+
+Uso de certificado.
+
+![Configración de certificado](./images/conf_cert_vpn.png)
